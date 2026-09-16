@@ -17,7 +17,6 @@ import com.example.student_crud.Service.StudentService;
 
 import jakarta.validation.Valid;
 
-@CrossOrigin(origins = "http://localhost:5173")
 @RestController
 @RequestMapping("/students")
 
