@@ -2,7 +2,6 @@ package com.example.student_crud.Controller;
 
 import java.util.List;
 
-import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -21,25 +20,31 @@ import jakarta.validation.Valid;
 @RequestMapping("/students")
 
 public class StudentController {
-	private final StudentService studentService;
-	public StudentController(StudentService studentService) {
-		this.studentService = studentService;
-	}
-	@PostMapping
-	public Student createStudent(@Valid @RequestBody Student student) {
-		return studentService.createStudent(student);
-	}
-	@GetMapping 
-	public List<Student> getAllStudents(){
-		return studentService.getAllStudents();
-	}
-	@PutMapping("/{id}")
-	public Student updateStudent(@PathVariable Long id, @Valid @RequestBody Student student) {
-		return studentService.updateStudent(id, student);
-	}
-	@DeleteMapping("/{id}")
-	public String deleteStudent(@PathVariable Long id) {
-		studentService.deleteStudent(id);
-		return "Deleted successfully";
-	}
+
+    private final StudentService studentService;
+
+    public StudentController(StudentService studentService) {
+        this.studentService = studentService;
+    }
+
+    @PostMapping
+    public Student createStudent(@Valid @RequestBody Student student) {
+        return studentService.createStudent(student);
+    }
+
+    @GetMapping
+    public List<Student> getAllStudents() {
+        return studentService.getAllStudents();
+    }
+
+    @PutMapping("/{id}")
+    public Student updateStudent(@PathVariable Long id, @Valid @RequestBody Student student) {
+        return studentService.updateStudent(id, student);
+    }
+
+    @DeleteMapping("/{id}")
+    public String deleteStudent(@PathVariable Long id) {
+        studentService.deleteStudent(id);
+        return "Deleted successfully";
+    }
 }
